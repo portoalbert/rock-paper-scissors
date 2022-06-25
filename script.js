@@ -4,62 +4,77 @@ let choice;
 let playerScore = 0;
 let winner;
 let computerScore = 0;
+const playerScoreDisplay = document.getElementById("player_score_display")
+const computerScoreDisplay = document.getElementById("computer_score_display")
+const resultDisplay = document.getElementById("result")
+const computerImgDisplay = document.getElementById("computerbtn")
 
-game();
 
 function computerPlay () {
   let x = Math.floor(Math.random() * 3)
    if (x == 0) {
     computerSelection = "rock";
+    computerImgDisplay.setAttribute('src','img/rock.jpg')
    }
    else if (x == 1) {
     computerSelection = "paper";
+    computerImgDisplay.setAttribute('src','img/paper.jpg')
    }
    else {
     computerSelection = "scissors";
+    computerImgDisplay.setAttribute('src','img/scissors.jpg')
    }
 }
 
-function playerPlay (){
-  playerSelection = prompt("Type: Rock,Paper or Scissors","rock").toLocaleLowerCase();
- 
+
+function playerRock (){ 
+  playerSelection = "rock"
+  game();
+}
+function playerPaper (){ 
+  playerSelection = "paper"
+  game();
+}
+function playerScissors (){ 
+  playerSelection = "scissors"
+  game();
 }
 
 function playRound() {
    if (playerSelection == "rock" && computerSelection == "rock") {
-     console.log("Rock on Rock. It's a tie!")
+    resultDisplay.innerHTML = "Tie"
      winner = "tie";
    }
    else if (playerSelection == "rock" && computerSelection == "paper") {
-    console.log("Rock on paper. You lose!")
+    resultDisplay.innerHTML = "You Lose"
     winner = "computer"
   }
   else if (playerSelection == "rock" && computerSelection == "scissors") {
-    console.log("Rock on Scissors. You win!")
+    resultDisplay.innerHTML = "You Win"
     winner = "player"
   }
   else if (playerSelection == "paper" && computerSelection == "rock") {
-    console.log("Paper on rock. You win!")
+    resultDisplay.innerHTML = "You Win"
     winner = "player"
   }
   else if (playerSelection == "paper" && computerSelection == "paper") {
-    console.log("Paper on Paper. It's a tie!")
+    resultDisplay.innerHTML = "Tie"
     winner = "tie";
   }
   else if (playerSelection == "paper" && computerSelection == "scissors") {
-    console.log("paper on scissors. you lose!")
+    resultDisplay.innerHTML = "You Lose"
     winner = "computer"
   }
   else if (playerSelection == "scissors" && computerSelection == "rock") {
-    console.log("scissors on Rock. you lose")
+    resultDisplay.innerHTML = "You Lose"
     winner = "computer"
   }
   else if (playerSelection == "scissors" && computerSelection == "paper") {
-    console.log("scissors on paper. you win")
+    resultDisplay.innerHTML = "You Win"
     winner = "player"
   }
   else if  (playerSelection == "scissors" && computerSelection == "scissors"){
-    console.log("scissors on scissors. It's a tie")
+    resultDisplay.innerHTML = "Tie"
     winner = "tie";
   }
 }
@@ -67,9 +82,11 @@ function playRound() {
 function score (){
   if (winner === "player") {
   playerScore ++;
+  playerScoreDisplay.innerHTML = playerScore;
   }
   else if (winner === "computer"){
     computerScore ++;
+    computerScoreDisplay.innerHTML = computerScore;
   }
   winner = null;
   console.log("Your score is " + playerScore);
@@ -77,21 +94,18 @@ function score (){
 }
 function gameWinner(){
   if (playerScore > computerScore){
-    console.log("You win big time!")
+    resultDisplay.innerHTML = "Winner Winner Chicken Dinner"
   }
   else if (computerScore > playerScore){
-    console.log("Big Loss Bigger Loser!")
+    resultDisplay.innerHTML = "You are dogwater"
   }
   else {
-    console.log("Tie man try again")
+    resultDisplay.innerHTML = "It's a tie"
   }
 }
 function game(){
-  for (let i = 0; i < 5; i++) {
   computerPlay();
-  playerPlay();
   playRound();
   score();
-  }
-  gameWinner();
+  //gameWinner();
 }

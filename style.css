@@ -1,0 +1,56 @@
+body{
+background-color: aqua;
+    width: 100vw;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+}
+body h1{
+    text-align: center;
+}
+.cardthree{
+    display: flex;
+    margin-top: 5%;
+    gap: 2%;
+}
+.rockbtn , .paperbtn , .scissorsbtn {
+    width: 30vw;
+    height: 30vw;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cardtwo {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+.cardfour {
+    display: flex;
+    gap: 5%;
+    text-align: center;
+    padding-top: 10%;
+}
+.cardfive {
+font-weight: 800;
+font-size: 30px;
+margin-bottom: 5%;
+}
+.cardsix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    font-size: 16px;
+}
+.cardsix img {
+    margin-top: 3%;
+    width: 30vw;
+    height: 30vw;
+}
+.titlesix {
+    font-size: 30px;
+}
